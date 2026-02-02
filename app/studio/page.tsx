@@ -348,7 +348,9 @@ export default function Studio() {
                     key={section.id}
                     onClick={() => {
                       setSelectedSection(section.id);
-                      setConfig(section.defaultConfig);
+                      if (section.id === 'hero') {
+                        setConfig(defaultHeroConfig);
+                      }
                     }}
                     className={`w-full text-left px-4 py-3 rounded-lg text-[14px] font-medium transition-all ${
                       selectedSection === section.id
