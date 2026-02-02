@@ -239,8 +239,8 @@ export function HeroV2({ config }: { config: any }) {
             {/* Hero Image */}
             <div className="relative aspect-[4/3] bg-white rounded-2xl shadow-xl overflow-hidden">
               <img 
-                src="/images/clean room.png"
-                alt="CedarRX Compounding Clean Room"
+                src="/images/How-to-become-a-pharmacist.png"
+                alt="Cedar Pharmacy Pharmacist"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -271,7 +271,7 @@ export function HeroV2({ config }: { config: any }) {
               transition={{ duration: 0.5, delay: 0.8, type: "spring" }}
             >
               <div className="font-display font-bold text-[24px] leading-none">15+</div>
-              <div className="font-sans text-[11px] opacity-90">Years</div>
+              <div className="font-sans text-[11px] opacity-90">Years Experience</div>
             </motion.div>
           </motion.div>
         </div>

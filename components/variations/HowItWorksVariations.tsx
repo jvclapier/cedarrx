@@ -25,7 +25,7 @@ const defaultConfig = {
       id: 'deliver',
       number: '03',
       title: 'Deliver',
-      description: 'Receive your medication via free home delivery or convenient pickup at our pharmacy.',
+      description: 'Receive your medication via home delivery or convenient pickup at our pharmacy.',
       icon: Truck,
     },
   ],

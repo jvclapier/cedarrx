@@ -21,7 +21,6 @@ const defaultConfig = {
       { label: 'Weight Loss', href: '#services' },
       { label: 'Dermatology', href: '#services' },
       { label: 'Sexual Health', href: '#services' },
-      { label: 'Home Delivery', href: '#services' },
     ],
     company: [
       { label: 'About Us', href: '#why-cedarrx' },
@@ -292,12 +291,16 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
             {/* Brand */}
             <div className="lg:col-span-5">
-              <h3 className="font-display font-bold text-[32px] text-cedar mb-4">{config.businessName}</h3>
+              <img 
+                src="/images/cedar_logo_transparent.png"
+                alt="Cedar Pharmacy Logo"
+                className="h-16 w-auto mb-4"
+              />
               <p className="font-sans text-[16px] text-neutral-text leading-relaxed mb-6">
                 {config.tagline}
               </p>
               
-              <div className="space-y-3 mb-8">
+              <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-cedar" />
                   <span className="font-sans text-[14px] text-neutral-text">{config.contact.address}</span>
@@ -314,24 +317,6 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
                     {config.contact.email}
                   </a>
                 </div>
-              </div>
-
-              {/* Social */}
-              <div className="flex gap-3">
-                {config.social.map((social: any) => {
-                  const Icon = social.icon;
-                  return (
-                    <motion.a
-                      key={social.label}
-                      href={social.href}
-                      className="w-10 h-10 bg-cedar/10 rounded-lg flex items-center justify-center hover:bg-cedar hover:text-white transition-colors"
-                      whileHover={{ y: -2 }}
-                      aria-label={social.label}
-                    >
-                      <Icon className="w-5 h-5" />
-                    </motion.a>
-                  );
-                })}
               </div>
             </div>
 

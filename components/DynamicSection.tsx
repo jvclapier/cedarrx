@@ -61,6 +61,46 @@ const ServicesV3 = dynamic(() => import('@/components/variations/ServicesVariati
   ssr: false,
   loading: () => <SectionPlaceholder />
 });
+const ServicesV4 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV4 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV5 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV5 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV6 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV6 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV7 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV7 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV8 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV8 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV9 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV9 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV10 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV10 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV11 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV11 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV12 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV12 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
+const ServicesV13 = dynamic(() => import('@/components/variations/ServicesVariations').then(mod => ({ default: mod.ServicesV13 })), { 
+  ssr: false,
+  loading: () => <SectionPlaceholder />
+});
 
 // WhyCedarRX variations
 const WhyCedarRXV1 = dynamic(() => import('@/components/variations/WhyCedarRXVariations').then(mod => ({ default: mod.WhyCedarRXV1 })), { 
@@ -120,7 +160,7 @@ const FooterV3 = dynamic(() => import('@/components/variations/FooterVariations'
 
 const variationComponents: Record<string, Record<string, any>> = {
   hero: { v1: HeroV1, v2: HeroV2, v3: HeroV3 },
-  services: { v1: ServicesV1, v2: ServicesV2, v3: ServicesV3 },
+  services: { v1: ServicesV1, v2: ServicesV2, v3: ServicesV3, v4: ServicesV4, v5: ServicesV5, v6: ServicesV6, v7: ServicesV7, v8: ServicesV8, v9: ServicesV9, v10: ServicesV10, v11: ServicesV11, v12: ServicesV12, v13: ServicesV13 },
   'why-cedarrx': { v1: WhyCedarRXV1, v2: WhyCedarRXV2, v3: WhyCedarRXV3 },
   'how-it-works': { v1: HowItWorksV1, v2: HowItWorksV2, v3: HowItWorksV3 },
   testimonials: { v1: TestimonialsV1, v2: TestimonialsV2, v3: TestimonialsV3 },
@@ -156,7 +196,7 @@ interface DynamicSectionProps {
 // Default variations for the live site
 const defaultVariations: Record<string, string> = {
   hero: 'v2',
-  services: 'v3',
+  services: 'v9',
   'why-cedarrx': 'v2',
   'how-it-works': 'v2',
   testimonials: 'v1',

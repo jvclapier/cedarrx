@@ -8,8 +8,8 @@ export default function Home() {
       <Navbar />
       <DynamicSection section="hero" />
       <DynamicSection section="services" />
-      <DynamicSection section="why-cedarrx" />
       <DynamicSection section="how-it-works" />
+      <DynamicSection section="why-cedarrx" />
       <DynamicSection section="testimonials" />
       <DynamicSection section="footer" />
       <DevToolbar />

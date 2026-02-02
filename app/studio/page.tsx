@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Copy, Check, X, Download } from 'lucide-react';
 import { HeroV1, HeroV2, HeroV3 } from '@/components/variations/HeroVariations';
-import { ServicesV1, ServicesV2, ServicesV3 } from '@/components/variations/ServicesVariations';
+import { ServicesV1, ServicesV2, ServicesV3, ServicesV4, ServicesV5, ServicesV6, ServicesV7, ServicesV8, ServicesV9, ServicesV10, ServicesV11, ServicesV12, ServicesV13 } from '@/components/variations/ServicesVariations';
 import { WhyCedarRXV1, WhyCedarRXV2, WhyCedarRXV3 } from '@/components/variations/WhyCedarRXVariations';
 import { HowItWorksV1, HowItWorksV2, HowItWorksV3 } from '@/components/variations/HowItWorksVariations';
 import { TestimonialsV1, TestimonialsV2, TestimonialsV3 } from '@/components/variations/TestimonialsVariations';
@@ -41,6 +41,16 @@ const sections = [
       { id: 'v1', name: 'V1: Sleek & Modern', component: ServicesV1 },
       { id: 'v2', name: 'V2: Creative & Geometric', component: ServicesV2 },
       { id: 'v3', name: 'V3: Super Imaginative', component: ServicesV3 },
+      { id: 'v4', name: 'V4: Simple Grid (White Cards)', component: ServicesV4 },
+      { id: 'v5', name: 'V5: Simple Grid (Bordered)', component: ServicesV5 },
+      { id: 'v6', name: 'V6: Simple Grid (Dark)', component: ServicesV6 },
+      { id: 'v7', name: 'V7: Simple Grid + Images (Cards)', component: ServicesV7 },
+      { id: 'v8', name: 'V8: Simple Grid + Images (Overlay)', component: ServicesV8 },
+      { id: 'v9', name: 'V9: Simple Grid + Images (Side)', component: ServicesV9 },
+      { id: 'v10', name: 'V10: Simple Grid + Images (Side Dark)', component: ServicesV10 },
+      { id: 'v11', name: 'V11: Full Dark (Glass Cards)', component: ServicesV11 },
+      { id: 'v12', name: 'V12: Full Dark (Image Overlay)', component: ServicesV12 },
+      { id: 'v13', name: 'V13: Full Dark (Minimal Text)', component: ServicesV13 },
     ],
     defaultConfig: {}
   },

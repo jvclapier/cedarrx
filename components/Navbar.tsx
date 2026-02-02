@@ -7,8 +7,8 @@ import { Menu, X, Phone } from 'lucide-react';
 const navLinks = [
   { name: 'Home', href: '#hero' },
   { name: 'Services', href: '#services' },
-  { name: 'Why CedarRX', href: '#why-cedarrx' },
   { name: 'How It Works', href: '#how-it-works' },
+  { name: 'Why CedarRX', href: '#why-cedarrx' },
   { name: 'Contact', href: '#footer' },
 ];
 
@@ -93,7 +93,7 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(e, '#footer')}
                 className="bg-cedar text-white px-5 py-2.5 rounded-lg font-sans text-[14px] font-semibold hover:bg-cedar-forest transition-colors"
               >
-                Get Started
+                Transfer Prescription
               </a>
             </div>
 
@@ -176,7 +176,7 @@ export default function Navbar() {
                     className="block w-full text-center bg-cedar text-white px-6 py-3 rounded-lg font-sans text-[15px] font-semibold hover:bg-cedar-forest transition-colors"
                     onClick={(e) => handleNavClick(e, '#footer')}
                   >
-                    Get Started
+                    Transfer Prescription
                   </a>
                 </div>
               </div>

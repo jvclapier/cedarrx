@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Users, Award, Heart, MapPin, Star, Shield, CheckCircle } from 'lucide-react';
 
 const defaultConfig = {
-  heading: 'Why Choose CedarRX Pharmacy?',
+  heading: 'Why Choose Cedar Pharmacy?',
   subheading: 'Expert care you can trust, personalized for your unique health journey',
   reasons: [
     {
@@ -140,8 +140,8 @@ export function WhyCedarRXV2({ config = defaultConfig }: { config?: any }) {
             {/* Main Image */}
             <div className="aspect-[4/3] bg-cream rounded-2xl overflow-hidden shadow-lg">
               <img 
-                src="/images/pharmacist.jpg"
-                alt="CedarRX Pharmacist"
+                src="/images/clean room hood.jpg"
+                alt="Cedar Pharmacy Clean Room"
                 className="w-full h-full object-cover"
               />
             </div>
