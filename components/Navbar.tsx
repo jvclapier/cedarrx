@@ -26,12 +26,21 @@ export default function Navbar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    setIsMobileMenuOpen(false);
+    
+    // Check if we're on the homepage
+    if (window.location.pathname !== '/') {
+      // Navigate to homepage with anchor
+      window.location.href = '/' + href;
+      return;
+    }
+    
+    // On homepage, just scroll to the section
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -89,8 +98,7 @@ export default function Navbar() {
                 <span>208-329-7811</span>
               </a>
               <a
-                href="#footer"
-                onClick={(e) => handleNavClick(e, '#footer')}
+                href="/transfer"
                 className="bg-cedar text-white px-5 py-2.5 rounded-lg font-sans text-[14px] font-semibold hover:bg-cedar-forest transition-colors"
               >
                 Transfer Prescription
@@ -172,9 +180,9 @@ export default function Navbar() {
                     <span>208-329-7811</span>
                   </a>
                   <a
-                    href="#footer"
+                    href="/transfer"
                     className="block w-full text-center bg-cedar text-white px-6 py-3 rounded-lg font-sans text-[15px] font-semibold hover:bg-cedar-forest transition-colors"
-                    onClick={(e) => handleNavClick(e, '#footer')}
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Transfer Prescription
                   </a>

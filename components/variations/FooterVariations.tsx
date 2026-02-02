@@ -8,7 +8,7 @@ const defaultConfig = {
   tagline: 'Expert compounding pharmacy delivering personalized medications nationwide',
   contact: {
     phone: '(208) 329-7811',
-    email: 'info@cedarrx.com',
+    email: 'info.cedarrx@gmail.com',
     address: '1309 Blue Lakes Blvd. N, Twin Falls, ID 83301',
   },
   hours: {
@@ -363,14 +363,6 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
             <p className="font-sans text-[14px] text-neutral-text">
               © 2026 {config.businessName}. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <a href="/privacy" className="font-sans text-[14px] text-neutral-text hover:text-cedar transition-colors">
-                Privacy Policy
-              </a>
-              <a href="/terms" className="font-sans text-[14px] text-neutral-text hover:text-cedar transition-colors">
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>
