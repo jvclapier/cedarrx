@@ -459,9 +459,15 @@ export default function Studio() {
                     transition={{ duration: 0.3 }}
                   >
                     {selectedSection === 'hero' ? (
-                      <SelectedComponent config={config} />
+                      (() => {
+                        const HeroComponent = SelectedComponent as React.ComponentType<{ config: typeof config }>;
+                        return <HeroComponent config={config} />;
+                      })()
                     ) : (
-                      <SelectedComponent />
+                      (() => {
+                        const Component = SelectedComponent as React.ComponentType;
+                        return <Component />;
+                      })()
                     )}
                   </motion.div>
                 )}
