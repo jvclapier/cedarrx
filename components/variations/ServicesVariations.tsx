@@ -13,7 +13,7 @@ const defaultConfig = {
       description: 'Custom medications formulated specifically for your individual needs and preferences.',
       icon: Pill,
       href: '/services/compounding',
-      image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&h=400&fit=crop&q=80'
+      image: '/images/compounding_2.jpg'
     },
     {
       id: 'weight-loss',
@@ -166,7 +166,7 @@ export function ServicesV2({ config = defaultConfig }: { config?: typeof default
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
             <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 text-white">
               <div>
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+                <div className="w-16 h-16 bg-lime/20 rounded-2xl flex items-center justify-center mb-6">
                   <FirstIcon className="w-8 h-8" />
                 </div>
                 <h3 className="font-display font-bold text-[32px] md:text-[40px] mb-4">
@@ -177,6 +177,7 @@ export function ServicesV2({ config = defaultConfig }: { config?: typeof default
                 </p>
               </div>
               <div className="flex items-center gap-3 text-white font-semibold group-hover:gap-4 transition-all">
+                <div className="w-2 h-2 bg-lime rounded-full" />
                 <span>Learn More</span>
                 <ArrowRight className="w-5 h-5" />
               </div>
@@ -223,7 +224,7 @@ export function ServicesV3({ config = defaultConfig }: { config?: typeof default
     <section className="relative w-full bg-neutral-dark py-20 md:py-32 overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-20 w-96 h-96 bg-cedar/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-terra/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-sage/20 rounded-full blur-3xl" />
       </div>
       
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
@@ -234,7 +235,7 @@ export function ServicesV3({ config = defaultConfig }: { config?: typeof default
           viewport={{ once: true }}
         >
           <motion.span 
-            className="inline-block text-terra font-serif italic text-[16px] mb-4"
+            className="inline-block text-white/60 font-serif italic text-[16px] mb-4"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -264,17 +265,30 @@ export function ServicesV3({ config = defaultConfig }: { config?: typeof default
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -6 }}
                 >
-                  <div className="h-56 bg-gradient-to-br from-cedar/30 to-sage/20 flex items-center justify-center">
-                    <Icon className="w-20 h-20 text-white/40" />
+                  <div className="h-56 relative overflow-hidden">
+                    {service.image ? (
+                      <>
+                        <img 
+                          src={service.image} 
+                          alt={service.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-dark/60 to-transparent" />
+                      </>
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-cedar/30 to-sage/20 flex items-center justify-center">
+                        <Icon className="w-20 h-20 text-white/40" />
+                      </div>
+                    )}
                   </div>
                   <div className="p-8">
-                    <h3 className="font-display font-bold text-[26px] text-white mb-3 group-hover:text-terra transition-colors">
+                    <h3 className="font-display font-bold text-[26px] text-white mb-3 group-hover:text-[#89b92b] transition-colors">
                       {service.title}
                     </h3>
                     <p className="font-sans text-[16px] leading-relaxed text-white/70 mb-6">
                       {service.description}
                     </p>
-                    <div className="flex items-center gap-3 text-terra font-semibold group-hover:gap-4 transition-all">
+                    <div className="flex items-center gap-3 text-white/80 font-semibold group-hover:text-[#89b92b] group-hover:gap-4 transition-all">
                       <span>Explore</span>
                       <ArrowRight className="w-5 h-5" />
                     </div>
@@ -291,23 +305,23 @@ export function ServicesV3({ config = defaultConfig }: { config?: typeof default
                 <motion.a
                   key={service.id}
                   href={service.href}
-                  className="group bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-terra/50 hover:bg-white/10 transition-all"
+                  className="group bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-[#89b92b]/50 hover:bg-white/10 transition-all"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -4 }}
                 >
-                  <div className="w-14 h-14 bg-terra/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-terra group-hover:scale-105 transition-all">
-                    <Icon className="w-7 h-7 text-terra group-hover:text-white transition-colors" />
+                  <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#89b92b] group-hover:scale-105 transition-all">
+                    <Icon className="w-7 h-7 text-white/60 group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="font-serif font-bold text-[22px] text-white mb-3 group-hover:text-terra transition-colors">
+                  <h3 className="font-serif font-bold text-[22px] text-white mb-3 group-hover:text-[#89b92b] transition-colors">
                     {service.title}
                   </h3>
                   <p className="font-sans text-[15px] leading-relaxed text-white/60 mb-5">
                     {service.description}
                   </p>
-                  <div className="flex items-center gap-2 text-terra text-[14px] font-semibold group-hover:gap-3 transition-all">
+                  <div className="flex items-center gap-2 text-white/70 text-[14px] font-semibold group-hover:text-[#89b92b] group-hover:gap-3 transition-all">
                     <span>Learn more</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>
@@ -317,22 +331,6 @@ export function ServicesV3({ config = defaultConfig }: { config?: typeof default
           </div>
         </div>
 
-        <motion.div 
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <motion.a
-            href="/services"
-            className="inline-flex items-center gap-3 bg-terra text-white px-10 py-5 rounded-full text-[17px] font-bold hover:bg-burgundy transition-colors"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            View All Services
-            <ArrowRight className="w-5 h-5" />
-          </motion.a>
-        </motion.div>
       </div>
     </section>
   );

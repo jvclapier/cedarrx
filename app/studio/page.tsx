@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Copy, Check, X, Download } from 'lucide-react';
 import { HeroV1, HeroV2, HeroV3 } from '@/components/variations/HeroVariations';
 import { ServicesV1, ServicesV2, ServicesV3 } from '@/components/variations/ServicesVariations';
 import { WhyCedarRXV1, WhyCedarRXV2, WhyCedarRXV3 } from '@/components/variations/WhyCedarRXVariations';
@@ -93,6 +94,8 @@ export default function Studio() {
   const [showGrid, setShowGrid] = useState(false);
   const [showConfigEditor, setShowConfigEditor] = useState(false);
   const [config, setConfig] = useState(defaultHeroConfig);
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Load saved variations from localStorage
   useEffect(() => {
@@ -198,6 +201,47 @@ export default function Studio() {
     }));
   };
 
+  // Generate export configuration
+  const generateExportConfig = () => {
+    // Check if hero config has been modified from defaults
+    const heroConfigModified = JSON.stringify(config) !== JSON.stringify(defaultHeroConfig);
+    
+    const exportData = {
+      selectedVariations: {
+        hero: selectedVariations.hero || 'v1',
+        services: selectedVariations.services || 'v1',
+        'why-cedarrx': selectedVariations['why-cedarrx'] || 'v1',
+        'how-it-works': selectedVariations['how-it-works'] || 'v1',
+        testimonials: selectedVariations.testimonials || 'v1',
+        footer: selectedVariations.footer || 'v1',
+      },
+      ...(heroConfigModified && {
+        heroConfig: {
+          eyebrow: config.eyebrow,
+          title: config.title,
+          titleAccent: config.titleAccent,
+          description: config.description,
+          primaryCta: config.primaryCta,
+          secondaryCta: config.secondaryCta,
+          contactInfo: config.contactInfo,
+        }
+      })
+    };
+    
+    return JSON.stringify(exportData, null, 2);
+  };
+
+  const copyToClipboard = async () => {
+    const exportText = generateExportConfig();
+    try {
+      await navigator.clipboard.writeText(exportText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-neutral-dark">
       {/* Studio Header */}
@@ -250,6 +294,14 @@ export default function Studio() {
                 }`}
               >
                 {showGrid ? '📐 Grid' : '📐'}
+              </button>
+
+              <button
+                onClick={() => setShowExportModal(true)}
+                className="px-4 py-2 bg-cream/10 text-cream hover:bg-cream/20 rounded-lg text-[14px] font-medium transition-colors flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Export
               </button>
 
               <div className="flex gap-2 bg-cream/10 rounded-lg p-1">
@@ -477,6 +529,80 @@ export default function Studio() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Export Modal */}
+      <AnimatePresence>
+        {showExportModal && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Backdrop */}
+            <motion.div 
+              className="absolute inset-0 bg-black/70"
+              onClick={() => setShowExportModal(false)}
+            />
+            
+            {/* Modal */}
+            <motion.div
+              className="relative bg-cedar-forest rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between p-6 border-b border-cream/20">
+                <div>
+                  <h2 className="text-cream text-[20px] font-bold">Export Configuration</h2>
+                  <p className="text-cream/60 text-[13px] mt-1">Copy this and share it to update the live site</p>
+                </div>
+                <button
+                  onClick={() => setShowExportModal(false)}
+                  className="p-2 text-cream/60 hover:text-cream hover:bg-cream/10 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Content */}
+              <div className="p-6 overflow-y-auto max-h-[50vh]">
+                <div className="bg-neutral-dark rounded-xl p-4 font-mono text-[13px] text-cream/90 overflow-x-auto">
+                  <pre className="whitespace-pre-wrap">{generateExportConfig()}</pre>
+                </div>
+              </div>
+
+              {/* Footer */}
+              <div className="flex items-center justify-between p-6 border-t border-cream/20 bg-cedar-forest/50">
+                <p className="text-cream/50 text-[12px]">
+                  Paste this in chat to apply changes to the codebase
+                </p>
+                <button
+                  onClick={copyToClipboard}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-lg text-[14px] font-semibold transition-all ${
+                    copied 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-terra text-white hover:bg-burgundy'
+                  }`}
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      Copy to Clipboard
+                    </>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

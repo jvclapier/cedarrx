@@ -16,6 +16,12 @@ const config: Config = {
           light: '#3D7A64',
           teal: '#5A9B82',
         },
+        // Logo accent color - use sparingly
+        lime: {
+          DEFAULT: '#89b92b',
+          light: '#9fc94a',
+          dark: '#6d9422',
+        },
         terra: {
           DEFAULT: '#D4816B',
           warm: '#D4816B',

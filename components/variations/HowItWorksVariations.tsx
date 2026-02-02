@@ -90,7 +90,7 @@ export function HowItWorksV1({ config = defaultConfig }: { config?: any }) {
 
                 {/* Connector Line (not on last) */}
                 {index < config.steps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-[2px] bg-gradient-to-r from-cedar/30 to-cedar/10" />
+                  <div className="hidden md:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-[2px] bg-gradient-to-r from-lime/50 via-cedar/30 to-cedar/10" />
                 )}
               </motion.div>
             );
@@ -108,8 +108,9 @@ export function HowItWorksV1({ config = defaultConfig }: { config?: any }) {
 export function HowItWorksV2({ config = defaultConfig }: { config?: any }) {
   return (
     <section className="relative w-full bg-cream py-20 md:py-28 overflow-hidden">
-      {/* Decorative blob */}
+      {/* Decorative blobs */}
       <div className="absolute top-20 right-0 w-96 h-96 bg-sage/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 left-10 w-64 h-64 bg-[#89b92b]/10 rounded-full blur-3xl" />
       
       <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         {/* Header - Left aligned */}
@@ -145,9 +146,12 @@ export function HowItWorksV2({ config = defaultConfig }: { config?: any }) {
                 {/* Background gradient on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-cedar/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 
+                {/* Subtle lime accent line at top */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#89b92b] to-cedar opacity-0 group-hover:opacity-100 transition-opacity" />
+                
                 <div className="relative z-10">
                   {/* Number */}
-                  <div className="font-display font-bold text-[48px] text-cedar/10 leading-none mb-4">
+                  <div className="font-display font-bold text-[48px] text-[#89b92b]/20 leading-none mb-4">
                     {step.number}
                   </div>
 

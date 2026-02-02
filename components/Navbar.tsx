@@ -2,29 +2,19 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { 
-    name: 'Services', 
-    href: '/services',
-    dropdown: [
-      { name: 'Compounding', href: '/services/compounding' },
-      { name: 'Weight Loss', href: '/services/weight-loss' },
-      { name: 'Dermatology', href: '/services/dermatology' },
-      { name: 'Sexual Health', href: '/services/sexual-health' },
-      { name: 'Free Delivery', href: '/services/delivery' },
-    ]
-  },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Home', href: '#hero' },
+  { name: 'Services', href: '#services' },
+  { name: 'Why CedarRX', href: '#why-cedarrx' },
+  { name: 'How It Works', href: '#how-it-works' },
+  { name: 'Contact', href: '#footer' },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +23,16 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <>
@@ -49,70 +49,29 @@ export default function Navbar() {
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-cedar rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-[18px]">C</span>
-              </div>
-              <div>
-                <span className={`font-display font-bold text-[20px] ${
-                  isScrolled ? 'text-cedar' : 'text-cedar'
-                }`}>
-                  CedarRX
-                </span>
-                <span className={`hidden sm:block text-[11px] font-sans ${
-                  isScrolled ? 'text-neutral-text' : 'text-neutral-text'
-                }`}>
-                  Compounding Pharmacy
-                </span>
-              </div>
+            <a href="/" className="flex items-center gap-3">
+              <img 
+                src="/images/cedar_logo_transparent.png"
+                alt="CedarRX Logo"
+                className="h-12 w-auto"
+              />
             </a>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
-                <div 
-                  key={link.name} 
-                  className="relative"
-                  onMouseEnter={() => link.dropdown && setActiveDropdown(link.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`font-sans text-[15px] font-medium transition-colors ${
+                    isScrolled 
+                      ? 'text-neutral-dark hover:text-cedar' 
+                      : 'text-neutral-dark hover:text-cedar'
+                  }`}
                 >
-                  <a
-                    href={link.href}
-                    className={`flex items-center gap-1 font-sans text-[15px] font-medium transition-colors ${
-                      isScrolled 
-                        ? 'text-neutral-dark hover:text-cedar' 
-                        : 'text-neutral-dark hover:text-cedar'
-                    }`}
-                  >
-                    {link.name}
-                    {link.dropdown && <ChevronDown className="w-4 h-4" />}
-                  </a>
-
-                  {/* Dropdown Menu */}
-                  <AnimatePresence>
-                    {link.dropdown && activeDropdown === link.name && (
-                      <motion.div
-                        className="absolute top-full left-0 pt-2"
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="bg-white rounded-xl shadow-lg border border-neutral-border overflow-hidden min-w-[200px]">
-                          {link.dropdown.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className="block px-5 py-3 text-[14px] font-sans text-neutral-dark hover:bg-cream hover:text-cedar transition-colors"
-                            >
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                  {link.name}
+                </a>
               ))}
             </div>
 
@@ -130,10 +89,11 @@ export default function Navbar() {
                 <span>208-329-7811</span>
               </a>
               <a
-                href="/refill"
+                href="#footer"
+                onClick={(e) => handleNavClick(e, '#footer')}
                 className="bg-cedar text-white px-5 py-2.5 rounded-lg font-sans text-[14px] font-semibold hover:bg-cedar-forest transition-colors"
               >
-                Refill Rx
+                Get Started
               </a>
             </div>
 
@@ -191,29 +151,14 @@ export default function Navbar() {
                 {/* Navigation Links */}
                 <nav className="space-y-2">
                   {navLinks.map((link) => (
-                    <div key={link.name}>
-                      <a
-                        href={link.href}
-                        className="block px-4 py-3 font-sans text-[16px] font-medium text-neutral-dark hover:text-cedar hover:bg-cream rounded-lg transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </a>
-                      {link.dropdown && (
-                        <div className="pl-4 space-y-1 mt-1">
-                          {link.dropdown.map((item) => (
-                            <a
-                              key={item.name}
-                              href={item.href}
-                              className="block px-4 py-2 font-sans text-[14px] text-neutral-text hover:text-cedar hover:bg-cream rounded-lg transition-colors"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {item.name}
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="block px-4 py-3 font-sans text-[16px] font-medium text-neutral-dark hover:text-cedar hover:bg-cream rounded-lg transition-colors"
+                      onClick={(e) => handleNavClick(e, link.href)}
+                    >
+                      {link.name}
+                    </a>
                   ))}
                 </nav>
 
@@ -227,11 +172,11 @@ export default function Navbar() {
                     <span>208-329-7811</span>
                   </a>
                   <a
-                    href="/refill"
+                    href="#footer"
                     className="block w-full text-center bg-cedar text-white px-6 py-3 rounded-lg font-sans text-[15px] font-semibold hover:bg-cedar-forest transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, '#footer')}
                   >
-                    Refill Prescription
+                    Get Started
                   </a>
                 </div>
               </div>

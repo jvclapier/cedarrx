@@ -153,14 +153,14 @@ interface DynamicSectionProps {
   section: 'hero' | 'services' | 'why-cedarrx' | 'how-it-works' | 'testimonials' | 'footer';
 }
 
-// Default variations for the live site (V1: Sleek & Modern for all sections)
+// Default variations for the live site
 const defaultVariations: Record<string, string> = {
-  hero: 'v1',
-  services: 'v1',
-  'why-cedarrx': 'v1',
-  'how-it-works': 'v1',
+  hero: 'v2',
+  services: 'v3',
+  'why-cedarrx': 'v2',
+  'how-it-works': 'v2',
   testimonials: 'v1',
-  footer: 'v1',
+  footer: 'v3',
 };
 
 export default function DynamicSection({ section }: DynamicSectionProps) {
@@ -202,8 +202,16 @@ export default function DynamicSection({ section }: DynamicSectionProps) {
 
   // Pass config for hero section
   if (section === 'hero') {
-    return <Component config={defaultHeroConfig} />;
+    return (
+      <div id={section}>
+        <Component config={defaultHeroConfig} />
+      </div>
+    );
   }
 
-  return <Component />;
+  return (
+    <div id={section}>
+      <Component />
+    </div>
+  );
 }

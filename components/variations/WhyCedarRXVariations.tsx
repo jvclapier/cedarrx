@@ -137,14 +137,13 @@ export function WhyCedarRXV2({ config = defaultConfig }: { config?: any }) {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            {/* Main Image Placeholder */}
+            {/* Main Image */}
             <div className="aspect-[4/3] bg-cream rounded-2xl overflow-hidden shadow-lg">
-              <div className="w-full h-full bg-gradient-to-br from-cedar/10 to-sage/20 flex items-center justify-center">
-                <div className="text-center">
-                  <Shield className="w-20 h-20 text-cedar/30 mx-auto mb-4" />
-                  <span className="text-neutral-text/50 text-[14px] font-sans">Pharmacy Interior</span>
-                </div>
-              </div>
+              <img 
+                src="/images/pharmacist.jpg"
+                alt="CedarRX Pharmacist"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Floating Stats */}
@@ -156,7 +155,7 @@ export function WhyCedarRXV2({ config = defaultConfig }: { config?: any }) {
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               {config.stats.slice(0, 2).map((stat: any, index: number) => (
-                <div key={index} className="bg-white rounded-xl p-4 shadow-lg text-center">
+                <div key={index} className="bg-white rounded-xl p-4 shadow-lg text-center border-t-2 border-lime">
                   <div className="font-display font-bold text-[28px] text-cedar leading-none mb-1">
                     {stat.value}
                   </div>

@@ -167,7 +167,6 @@ export function HeroV2({ config }: { config: any }) {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="inline-flex items-center gap-2 text-cedar font-serif italic text-[15px] mb-8 bg-white px-5 py-2 rounded-full border border-cedar/30 shadow-sm"
             >
-              <div className="w-2 h-2 bg-cedar rounded-full" />
               <span>{config.eyebrow}</span>
             </motion.div>
 
@@ -237,14 +236,13 @@ export function HeroV2({ config }: { config: any }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            {/* Image Placeholder */}
+            {/* Hero Image */}
             <div className="relative aspect-[4/3] bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-cedar/10 to-sage/20 flex items-center justify-center">
-                <div className="text-center">
-                  <Users className="w-20 h-20 text-cedar/30 mx-auto mb-4" />
-                  <span className="text-neutral-text/50 text-[14px] font-sans">Pharmacist Team Photo</span>
-                </div>
-              </div>
+              <img 
+                src="/images/clean room.png"
+                alt="CedarRX Compounding Clean Room"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Floating Info Card */}

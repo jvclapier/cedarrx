@@ -293,7 +293,7 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div className="max-w-md">
-              <h3 className="font-display font-bold text-[28px] mb-2">Stay Connected</h3>
+              <h3 className="font-display font-bold text-[28px] mb-2 text-white">Stay Connected</h3>
               <p className="font-sans text-[16px] text-white/80">
                 Get health tips and updates from our pharmacy team.
               </p>
@@ -302,10 +302,10 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
               <input 
                 type="email" 
                 placeholder="Enter your email" 
-                className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder:text-white/50 font-sans text-[15px] w-64 focus:outline-none focus:border-white/40"
+                className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder:text-white/50 font-sans text-[15px] w-64 focus:outline-none focus:border-lime/60"
               />
               <motion.button
-                className="bg-white text-cedar px-6 py-4 rounded-xl font-semibold text-[15px]"
+                className="bg-lime text-white px-6 py-4 rounded-xl font-semibold text-[15px] hover:bg-lime-dark transition-colors"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
