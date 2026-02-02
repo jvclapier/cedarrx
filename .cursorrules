@@ -1,0 +1,52 @@
+# CedarRX - Cursor AI Rules
+
+## Project Context
+This is CedarRX, an expert compounding pharmacy providing personalized medications and healthcare services in Twin Falls, Idaho.
+
+## Design System (Reference Only)
+When building sections, refer to `DESIGN-AGENT.md` for complete guidelines.
+Note: Agent must be explicitly called with @.DESIGN or @DESIGN-AGENT.md
+
+### Colors (ONLY USE THESE)
+- Cedar Green: #2D5F4F (primary brand, CTAs)
+- Deep Forest: #1E4038 (dark sections, hover)
+- Light Cedar: #3D7A64 (accents)
+- Warm Cream: #FBF9F6 (main backgrounds - NOT stark white)
+- White: #FFFFFF (cards, contrast sections)
+- Text: #1A202C (headings), #4A5568 (body)
+- 🚫 NO bright blues, bright reds, stark white backgrounds, black text
+
+### Typography
+- All text: Inter (system-ui fallback)
+- Headings: Semi-bold (600) or Bold (700)
+- Body: Regular (400)
+- Light body: Light (300) for subtle text
+- Keep it clean, modern, medical-professional
+
+### Aesthetic
+- Warm, natural, trustworthy (inspired by Cedar Clinic)
+- Cream backgrounds create approachability
+- Forest green conveys natural health
+- Lots of whitespace and breathing room
+- Subtle animations only (medical professional)
+
+## Tech Stack
+- Next.js 14+ with App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion for animations
+
+## Key Files
+- `.DESIGN` or `DESIGN-AGENT.md` - Complete design agent
+- `AGENT-QUICK-START.md` - Quick reference
+- `app/globals.css` - Color system and typography
+- `tailwind.config.ts` - Tailwind configuration
+
+## Remember
+- Every section should feel warm, natural, and trustworthy
+- Use cream backgrounds (not stark white) for warmth
+- Cedar green is the hero color
+- Animations should be subtle and professional
+- Mobile-first responsive design
+- Make content editable via config objects
+- Trust-first approach for medical/pharmacy context

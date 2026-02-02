@@ -1,0 +1,32 @@
+# [BRAND_NAME] - Cursor AI Rules
+
+## Project Context
+This is [BRAND_NAME], [brief description of project].
+
+## Design System (Reference Only)
+When building sections, refer to `DESIGN-AGENT.md` for complete guidelines.
+Note: Agent must be explicitly called with @.DESIGN or @DESIGN-AGENT.md
+
+### Colors (ONLY USE THESE)
+<!-- Update with your brand colors -->
+- Dark: [#DARK_COLOR], [#DARKER_COLOR]
+- Accent: [#ACCENT_COLOR], [#ACCENT_HOVER]
+- Light: #FFFFFF, [#LIGHT_BG]
+- 🚫 NO [forbidden colors]
+
+### Typography
+<!-- Update with your brand fonts -->
+- Headings: [Heading Font] (bold)
+- Body: [Body Font] (light 300)
+- Accents: [Accent Font] (italic) - optional
+
+## Key Files
+- `.DESIGN` or `DESIGN-AGENT.md` - Complete design agent
+- `AGENT-QUICK-START.md` - Quick reference
+- `app/globals.css` - Color system and typography
+
+## Remember
+- Every section should feel [your aesthetic adjective]
+- Animations should be smooth (60fps)
+- Mobile-first responsive design
+- Make content editable via config objects
