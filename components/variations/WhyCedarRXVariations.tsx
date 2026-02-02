@@ -4,13 +4,13 @@ import { motion } from 'framer-motion';
 import { Users, Award, Heart, MapPin, Star, Shield, CheckCircle } from 'lucide-react';
 
 const defaultConfig = {
-  heading: 'Why Choose CedarRX?',
+  heading: 'Why Choose CedarRX Pharmacy?',
   subheading: 'Expert care you can trust, personalized for your unique health journey',
   reasons: [
     {
       id: 'expert',
       title: 'Expert Pharmacists',
-      description: 'Board-certified compounding specialists with decades of combined experience.',
+      description: 'Compounding specialists with decades of combined experience dedicated to your care.',
       icon: Award,
     },
     {
@@ -20,20 +20,20 @@ const defaultConfig = {
       icon: Heart,
     },
     {
-      id: 'local',
-      title: 'Locally Owned',
-      description: 'Proudly serving Twin Falls and surrounding communities since 2009.',
-      icon: MapPin,
+      id: 'quality',
+      title: 'Quality Focused',
+      description: 'State-of-the-art facilities and rigorous quality standards for every compound.',
+      icon: Shield,
     },
     {
       id: 'trusted',
-      title: 'Trusted by Thousands',
-      description: '15+ years of building relationships and delivering exceptional care.',
+      title: 'Trusted Partner',
+      description: 'Working closely with physicians to deliver exceptional patient outcomes.',
       icon: Users,
     },
   ],
   stats: [
-    { label: 'Years Serving', value: '15+' },
+    { label: 'Years Experience', value: '15+' },
     { label: 'Happy Patients', value: '10K+' },
     { label: 'Medications Compounded', value: '50K+' },
     { label: 'Patient Satisfaction', value: '99%' },
@@ -284,7 +284,7 @@ export function WhyCedarRXV3({ config = defaultConfig }: { config?: any }) {
                     <Star key={i} className="w-4 h-4 fill-current" />
                   ))}
                 </div>
-                <div className="font-sans text-[13px] font-semibold">Trusted Locally</div>
+                <div className="font-sans text-[13px] font-semibold">Trusted Care</div>
               </motion.div>
             </div>
           </motion.div>

@@ -1,31 +1,31 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MessageSquare, Pill, Truck, ArrowRight, User } from 'lucide-react';
+import { FileText, Pill, Truck, ArrowRight, User } from 'lucide-react';
 
 const defaultConfig = {
   heading: 'How It Works',
   subheading: 'Three simple steps to personalized medication',
   steps: [
     {
-      id: 'consult',
+      id: 'prescribe',
       number: '01',
-      title: 'Consult',
-      description: 'Talk with our expert pharmacists about your health needs and medication goals. We listen and provide expert guidance.',
-      icon: MessageSquare,
+      title: 'Prescribe',
+      description: 'Your doctor consults with one of our expert pharmacists to determine the best compounded medication for your needs.',
+      icon: FileText,
     },
     {
       id: 'compound',
       number: '02',
       title: 'Compound',
-      description: 'Our certified compounding pharmacists create your personalized medication using the highest quality ingredients.',
+      description: 'Our pharmacists and technicians create your personalized medication using the highest quality ingredients.',
       icon: Pill,
     },
     {
       id: 'deliver',
       number: '03',
       title: 'Deliver',
-      description: 'Receive your medication via free home delivery or pick it up at our pharmacy in Twin Falls.',
+      description: 'Receive your medication via free home delivery or convenient pickup at our pharmacy.',
       icon: Truck,
     },
   ],

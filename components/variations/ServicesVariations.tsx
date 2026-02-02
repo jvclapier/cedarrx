@@ -18,7 +18,7 @@ const defaultConfig = {
     {
       id: 'weight-loss',
       title: 'Weight Loss',
-      description: 'Personalized weight management programs with GLP-1 medications and expert guidance.',
+      description: 'GLP-1 and other weight management medications compounded to your doctor\'s specifications.',
       icon: Scale,
       href: '/services/weight-loss',
       image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&q=80'

@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ArrowRight } from '
 
 const defaultConfig = {
   businessName: 'CedarRX',
-  tagline: 'Expert compounding pharmacy serving Twin Falls, Idaho',
+  tagline: 'Expert compounding pharmacy delivering personalized medications nationwide',
   contact: {
     phone: '(208) 329-7811',
     email: 'info@cedarrx.com',
@@ -17,23 +17,16 @@ const defaultConfig = {
   },
   links: {
     services: [
-      { label: 'Compounding', href: '/services/compounding' },
-      { label: 'Weight Loss', href: '/services/weight-loss' },
-      { label: 'Dermatology', href: '/services/dermatology' },
-      { label: 'Sexual Health', href: '/services/sexual-health' },
-      { label: 'Home Delivery', href: '/services/home-delivery' },
+      { label: 'Compounding', href: '#services' },
+      { label: 'Weight Loss', href: '#services' },
+      { label: 'Dermatology', href: '#services' },
+      { label: 'Sexual Health', href: '#services' },
+      { label: 'Home Delivery', href: '#services' },
     ],
     company: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Our Team', href: '/team' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Blog', href: '/blog' },
-    ],
-    resources: [
-      { label: 'Patient Portal', href: '/portal' },
-      { label: 'Insurance', href: '/insurance' },
-      { label: 'FAQs', href: '/faq' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'About Us', href: '#why-cedarrx' },
+      { label: 'How It Works', href: '#how-it-works' },
+      { label: 'Contact', href: '#footer' },
     ],
   },
   social: [
@@ -110,6 +103,11 @@ export function FooterV1({ config = defaultConfig }: { config?: any }) {
                 </li>
               ))}
             </ul>
+            <h4 className="font-sans font-semibold text-[16px] mt-6 mb-2">Hours</h4>
+            <div className="font-sans text-[14px] text-white/70 space-y-1">
+              <p>{config.hours.weekday}</p>
+              <p>{config.hours.weekend}</p>
+            </div>
           </div>
 
           {/* Contact Column */}
@@ -288,40 +286,12 @@ export function FooterV2({ config = defaultConfig }: { config?: any }) {
 export function FooterV3({ config = defaultConfig }: { config?: any }) {
   return (
     <footer className="relative w-full bg-cream text-neutral-dark overflow-hidden">
-      {/* Top Section - Newsletter */}
-      <div className="bg-cedar text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-            <div className="max-w-md">
-              <h3 className="font-display font-bold text-[28px] mb-2 text-white">Stay Connected</h3>
-              <p className="font-sans text-[16px] text-white/80">
-                Get health tips and updates from our pharmacy team.
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white placeholder:text-white/50 font-sans text-[15px] w-64 focus:outline-none focus:border-lime/60"
-              />
-              <motion.button
-                className="bg-lime text-white px-6 py-4 rounded-xl font-semibold text-[15px] hover:bg-lime-dark transition-colors"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Subscribe
-              </motion.button>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="py-16 md:py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
             {/* Brand */}
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-5">
               <h3 className="font-display font-bold text-[32px] text-cedar mb-4">{config.businessName}</h3>
               <p className="font-sans text-[16px] text-neutral-text leading-relaxed mb-6">
                 {config.tagline}
@@ -336,6 +306,12 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
                   <Phone className="w-5 h-5 text-cedar" />
                   <a href={`tel:${config.contact.phone}`} className="font-sans text-[14px] text-neutral-text hover:text-cedar transition-colors">
                     {config.contact.phone}
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-cedar" />
+                  <a href={`mailto:${config.contact.email}`} className="font-sans text-[14px] text-neutral-text hover:text-cedar transition-colors">
+                    {config.contact.email}
                   </a>
                 </div>
               </div>
@@ -360,7 +336,7 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
             </div>
 
             {/* Links */}
-            <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8">
               <div>
                 <h4 className="font-serif font-bold text-[16px] text-neutral-dark mb-4">Services</h4>
                 <ul className="space-y-2">
@@ -378,19 +354,6 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
                 <h4 className="font-serif font-bold text-[16px] text-neutral-dark mb-4">Company</h4>
                 <ul className="space-y-2">
                   {config.links.company.map((link: any) => (
-                    <li key={link.label}>
-                      <a href={link.href} className="font-sans text-[14px] text-neutral-text hover:text-cedar transition-colors">
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-serif font-bold text-[16px] text-neutral-dark mb-4">Resources</h4>
-                <ul className="space-y-2">
-                  {config.links.resources.map((link: any) => (
                     <li key={link.label}>
                       <a href={link.href} className="font-sans text-[14px] text-neutral-text hover:text-cedar transition-colors">
                         {link.label}
