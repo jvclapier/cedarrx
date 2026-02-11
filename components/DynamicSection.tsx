@@ -182,7 +182,7 @@ const defaultHeroConfig = {
   titleAccent: 'Compounding Pharmacy',
   description: 'Personalized medications crafted by expert pharmacists for your unique health needs. Experience care that\'s as unique as you are.',
   primaryCta: { text: 'Refill Prescription', href: '/refill' },
-  secondaryCta: { text: 'Contact Us', href: '/contact' },
+  secondaryCta: { text: 'Contact Us', href: '#footer' },
   contactInfo: {
     phone: '208-329-7811',
     address: '1309 Blue Lakes Blvd. N, Twin Falls, ID 83301'
