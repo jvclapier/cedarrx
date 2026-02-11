@@ -1,34 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
 export default function RefillPage() {
-  useEffect(() => {
-    // Set Digital Pharmacist config globals
-    (window as any).pid = "2083297781";
-    (window as any).configid = "2083297781";
-
-    // Load the refill widget script
-    const script = document.createElement('script');
-    script.src = 'https://api-web.rxwiki.com/refill/shared_config/embedRefillApp.js';
-    script.async = true;
-    
-    const widgetContainer = document.getElementById('refill-widget');
-    if (widgetContainer) {
-      widgetContainer.appendChild(script);
-    }
-
-    return () => {
-      // Cleanup on unmount
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
-
   return (
     <main className="min-h-screen bg-cream">
       <Navbar />
@@ -51,7 +27,7 @@ export default function RefillPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             Quickly and easily refill your prescriptions online. Simply fill out the form below 
-            and we'll have your medication ready.
+            and we&apos;ll have your medication ready.
           </motion.p>
           <motion.div 
             className="flex items-center justify-center gap-2 text-cedar font-sans font-semibold"
@@ -77,11 +53,15 @@ export default function RefillPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div id="refill-widget" className="refillApp">
-              <div>
-                {/* Digital Pharmacist refill widget loads here */}
+            {/* Digital Pharmacist widget - injected as raw HTML to match their exact embed format */}
+            <div dangerouslySetInnerHTML={{ __html: `
+              <script>pid="2083297781"; configid="2083297781";</script>
+              <div class="refillApp">
+                <div>
+                  <script src="https://api-web.rxwiki.com/refill/shared_config/embedRefillApp.js"></script>
+                </div>
               </div>
-            </div>
+            `}} />
           </motion.div>
         </div>
       </section>
