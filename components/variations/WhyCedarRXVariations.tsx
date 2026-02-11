@@ -1,35 +1,35 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, Award, Heart, MapPin, Star, Shield, CheckCircle } from 'lucide-react';
+import { Users, Award, Heart, MapPin, Star, Shield, CheckCircle, Phone, Search } from 'lucide-react';
 
 const defaultConfig = {
-  heading: 'Why Choose Cedar Pharmacy?',
-  subheading: 'Expert care you can trust, personalized for your unique health journey',
+  heading: 'Compounding Without Compromise',
+  subheading: 'Healthcare is personal to us and we never settle when it comes to formulations, evolving best practices, or compounding standards. Striving for the best isn\'t just what we value, it\'s who we are.',
   reasons: [
     {
-      id: 'expert',
-      title: 'Expert Pharmacists',
-      description: 'Compounding specialists with decades of combined experience dedicated to your care.',
+      id: 'service',
+      title: 'Focus on Customer Service',
+      description: '24 hour turn around time, replacement compounds when issues arise, and guess what...we answer the phone when you call.',
+      icon: Phone,
+    },
+    {
+      id: 'compounding',
+      title: 'Cutting-Edge Compounding',
+      description: 'We operate one of the region\'s most advanced compounding facilities, exceeding national regulatory expectations.',
       icon: Award,
     },
     {
-      id: 'personalized',
-      title: 'Personalized Care',
-      description: 'Every medication is tailored specifically to your individual health needs.',
-      icon: Heart,
-    },
-    {
       id: 'quality',
-      title: 'Quality Focused',
-      description: 'State-of-the-art facilities and rigorous quality standards for every compound.',
+      title: 'Quality Assurance',
+      description: 'Every API and finished compound is independently tested for sterility, potency, and endotoxins — a level of validation most pharmacies do not perform.',
       icon: Shield,
     },
     {
-      id: 'trusted',
-      title: 'Trusted Partner',
-      description: 'Working closely with physicians to deliver exceptional patient outcomes.',
-      icon: Users,
+      id: 'vetting',
+      title: 'Rigorous Vendor Vetting',
+      description: 'We don\'t just verify FDA registration, we investigate inspection history and cGMP adherence. Vendors that don\'t meet our standards don\'t make it into our supply chain.',
+      icon: Search,
     },
   ],
   stats: [
