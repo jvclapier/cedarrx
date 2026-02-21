@@ -10,29 +10,31 @@ export default function RefillPage() {
     console.log('[Refill] useEffect fired');
 
     const refillApp = document.querySelector('.refillApp');
-    console.log('[Refill] .refillApp element:', refillApp);
-
     if (!refillApp) {
       console.error('[Refill] .refillApp div not found in DOM');
       return;
     }
 
+    // pid must be set BEFORE the script loads — try the pharmacy phone as the ID
+    (window as any).pid = '2083297811';
+    (window as any).configid = '2083297811';
+    console.log('[Refill] Set window.pid =', (window as any).pid);
+
     const script = document.createElement('script');
     script.src = 'https://api-web.rxwiki.com/refill/shared_config/embedRefillApp.js';
+    script.onload = () => {
+      console.log('[Refill] Script loaded. window.angular:', (window as any).angular);
+      console.log('[Refill] innerHTML immediately after load:', refillApp.innerHTML.slice(0, 300));
+    };
+    script.onerror = (e) => console.error('[Refill] Script failed to load:', e);
 
-    script.onload = () => console.log('[Refill] embedRefillApp.js loaded successfully');
-    script.onerror = (e) => console.error('[Refill] embedRefillApp.js failed to load:', e);
-
-    console.log('[Refill] Appending script to .refillApp');
     refillApp.appendChild(script);
 
-    // Log DOM state 2s after script loads to see if widget rendered
+    // Check again after Angular has had time to bootstrap
     setTimeout(() => {
-      console.log('[Refill] .refillApp innerHTML after 2s:', refillApp.innerHTML);
-      console.log('[Refill] window.angular:', (window as any).angular);
-      console.log('[Refill] window.pid:', (window as any).pid);
-      console.log('[Refill] window.configid:', (window as any).configid);
-    }, 2000);
+      console.log('[Refill] 3s check — innerHTML:', refillApp.innerHTML.slice(0, 500));
+      console.log('[Refill] 3s check — window.angular:', (window as any).angular);
+    }, 3000);
 
     return () => {
       if (refillApp.contains(script)) {
