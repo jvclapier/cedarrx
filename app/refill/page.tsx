@@ -7,14 +7,32 @@ import Navbar from '@/components/Navbar';
 
 export default function RefillPage() {
   useEffect(() => {
-    // Inject script directly inside .refillApp div as Digital Pharmacist requires
+    console.log('[Refill] useEffect fired');
+
     const refillApp = document.querySelector('.refillApp');
-    if (!refillApp) return;
+    console.log('[Refill] .refillApp element:', refillApp);
+
+    if (!refillApp) {
+      console.error('[Refill] .refillApp div not found in DOM');
+      return;
+    }
 
     const script = document.createElement('script');
     script.src = 'https://api-web.rxwiki.com/refill/shared_config/embedRefillApp.js';
 
+    script.onload = () => console.log('[Refill] embedRefillApp.js loaded successfully');
+    script.onerror = (e) => console.error('[Refill] embedRefillApp.js failed to load:', e);
+
+    console.log('[Refill] Appending script to .refillApp');
     refillApp.appendChild(script);
+
+    // Log DOM state 2s after script loads to see if widget rendered
+    setTimeout(() => {
+      console.log('[Refill] .refillApp innerHTML after 2s:', refillApp.innerHTML);
+      console.log('[Refill] window.angular:', (window as any).angular);
+      console.log('[Refill] window.pid:', (window as any).pid);
+      console.log('[Refill] window.configid:', (window as any).configid);
+    }, 2000);
 
     return () => {
       if (refillApp.contains(script)) {
