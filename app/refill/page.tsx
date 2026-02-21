@@ -1,10 +1,33 @@
 'use client';
 
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Phone } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
 export default function RefillPage() {
+  useEffect(() => {
+    // Set global variables required by Digital Pharmacist before the embed script loads
+    (window as { pid?: string; configid?: string } & typeof window).pid = '2083297781';
+    (window as { pid?: string; configid?: string } & typeof window).configid = '2083297781';
+
+    // Dynamically inject the embed script so it executes properly
+    const script = document.createElement('script');
+    script.src = 'https://api-web.rxwiki.com/refill/shared_config/embedRefillApp.js';
+    script.async = true;
+
+    const container = document.getElementById('refill-widget-container');
+    if (container) {
+      container.appendChild(script);
+    }
+
+    return () => {
+      if (container && container.contains(script)) {
+        container.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <main className="min-h-screen bg-cream">
       <Navbar />
@@ -37,8 +60,8 @@ export default function RefillPage() {
           >
             <Phone className="w-5 h-5" />
             <span>Need Help? Call us: </span>
-            <a href="tel:2083297781" className="hover:text-cedar-forest transition-colors underline">
-              208-329-7781
+            <a href="tel:2083297811" className="hover:text-cedar-forest transition-colors underline">
+              208-329-7811
             </a>
           </motion.div>
         </div>
@@ -53,15 +76,9 @@ export default function RefillPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            {/* Digital Pharmacist widget - injected as raw HTML to match their exact embed format */}
-            <div dangerouslySetInnerHTML={{ __html: `
-              <script>pid="2083297781"; configid="2083297781";</script>
-              <div class="refillApp">
-                <div>
-                  <script src="https://api-web.rxwiki.com/refill/shared_config/embedRefillApp.js"></script>
-                </div>
-              </div>
-            `}} />
+            <div id="refill-widget-container">
+              <div className="refillApp"></div>
+            </div>
           </motion.div>
         </div>
       </section>

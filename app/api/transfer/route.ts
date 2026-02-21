@@ -101,7 +101,7 @@ This request was submitted via the Cedar Pharmacy website.
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Cedar Pharmacy <onboarding@resend.dev>',
+          from: 'Cedar Pharmacy <noreply@cedarrx.com>',
           to: ['info.cedarrx@gmail.com'],
           subject: `Prescription Transfer Request - ${data.firstName} ${data.lastName}`,
           text: emailContent,

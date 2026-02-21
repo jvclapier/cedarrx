@@ -122,8 +122,8 @@ export default function TransferPage() {
           >
             <Phone className="w-5 h-5" />
             <span>Need Help? Call us: </span>
-            <a href="tel:2083297781" className="hover:text-cedar-forest transition-colors underline">
-              208-329-7781
+            <a href="tel:2083297811" className="hover:text-cedar-forest transition-colors underline">
+              208-329-7811
             </a>
           </motion.div>
         </div>
