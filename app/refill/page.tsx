@@ -7,23 +7,18 @@ import Navbar from '@/components/Navbar';
 
 export default function RefillPage() {
   useEffect(() => {
-    // Set global variables required by Digital Pharmacist before the embed script loads
-    (window as { pid?: string; configid?: string } & typeof window).pid = '2083297781';
-    (window as { pid?: string; configid?: string } & typeof window).configid = '2083297781';
+    // Inject script directly inside .refillApp div as Digital Pharmacist requires
+    const refillApp = document.querySelector('.refillApp');
+    if (!refillApp) return;
 
-    // Dynamically inject the embed script so it executes properly
     const script = document.createElement('script');
     script.src = 'https://api-web.rxwiki.com/refill/shared_config/embedRefillApp.js';
-    script.async = true;
 
-    const container = document.getElementById('refill-widget-container');
-    if (container) {
-      container.appendChild(script);
-    }
+    refillApp.appendChild(script);
 
     return () => {
-      if (container && container.contains(script)) {
-        container.removeChild(script);
+      if (refillApp.contains(script)) {
+        refillApp.removeChild(script);
       }
     };
   }, []);
