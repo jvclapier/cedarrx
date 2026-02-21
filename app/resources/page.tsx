@@ -44,7 +44,7 @@ export default function ResourcesPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-28 pb-14 md:pt-36 md:pb-18 bg-white border-b border-neutral-100">
+      <section className="relative pt-16 pb-14 bg-white border-b border-neutral-100">
         <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
           <p className="font-sans text-[13px] font-semibold text-cedar uppercase tracking-widest mb-3">
             Patient Resources

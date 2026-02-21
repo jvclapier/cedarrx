@@ -10,7 +10,6 @@ const navLinks: { name: string; href: string; external?: boolean }[] = [
   { name: 'How It Works', href: '#how-it-works' },
   { name: 'Why CedarRX', href: '#why-cedarrx' },
   { name: 'Resources', href: '/resources', external: true },
-  { name: 'Contact', href: '#footer' },
 ];
 
 export default function Navbar() {
