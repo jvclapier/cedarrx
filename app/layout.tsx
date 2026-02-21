@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   title: 'CedarRX | Expert Compounding Pharmacy in Twin Falls, ID',
   description: 'Personalized medications crafted by expert pharmacists for your unique health needs. Compounding, weight loss, dermatology, and more in Twin Falls, Idaho.',
   keywords: 'compounding pharmacy, Twin Falls pharmacy, personalized medication, weight loss, dermatology, erectile dysfunction, home delivery',
+  icons: {
+    icon: '/images/favicon.png',
+    apple: '/images/favicon.png',
+  },
 }
 
 export default function RootLayout({

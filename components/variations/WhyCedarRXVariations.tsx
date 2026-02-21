@@ -22,7 +22,7 @@ const defaultConfig = {
     {
       id: 'quality',
       title: 'Quality Assurance',
-      description: 'Every API and finished compound is independently tested for sterility, potency, and endotoxins — a level of validation most pharmacies do not perform.',
+      description: 'Finished compounds are tested by a 3rd party lab for sterility, potency, and endotoxins — a level of validation most pharmacies do not perform.',
       icon: Shield,
     },
     {

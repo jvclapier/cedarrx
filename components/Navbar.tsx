@@ -4,11 +4,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 
-const navLinks = [
+const navLinks: { name: string; href: string; external?: boolean }[] = [
   { name: 'Home', href: '#hero' },
   { name: 'Services', href: '#services' },
   { name: 'How It Works', href: '#how-it-works' },
   { name: 'Why CedarRX', href: '#why-cedarrx' },
+  { name: 'Resources', href: '/resources', external: true },
   { name: 'Contact', href: '#footer' },
 ];
 
@@ -72,7 +73,7 @@ export default function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={link.external ? undefined : (e) => handleNavClick(e, link.href)}
                   className={`font-sans text-[15px] font-medium transition-colors ${
                     isScrolled 
                       ? 'text-neutral-dark hover:text-cedar' 
@@ -163,7 +164,7 @@ export default function Navbar() {
                       key={link.name}
                       href={link.href}
                       className="block px-4 py-3 font-sans text-[16px] font-medium text-neutral-dark hover:text-cedar hover:bg-cream rounded-lg transition-colors"
-                      onClick={(e) => handleNavClick(e, link.href)}
+                      onClick={link.external ? () => setIsMobileMenuOpen(false) : (e) => handleNavClick(e, link.href)}
                     >
                       {link.name}
                     </a>

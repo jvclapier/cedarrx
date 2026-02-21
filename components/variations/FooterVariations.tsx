@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, ArrowRight, ChevronDown } from 'lucide-react';
 
 const defaultConfig = {
   businessName: 'CedarRX',
@@ -283,6 +284,8 @@ export function FooterV2({ config = defaultConfig }: { config?: any }) {
 // Magazine-style, tasteful, refined
 // ========================================
 export function FooterV3({ config = defaultConfig }: { config?: any }) {
+  const [disclaimerOpen, setDisclaimerOpen] = useState(false);
+
   return (
     <footer className="relative w-full bg-cream text-neutral-dark overflow-hidden">
       {/* Main Footer */}
@@ -354,8 +357,37 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
                   <p>{config.hours.weekday}</p>
                   <p>{config.hours.weekend}</p>
                 </div>
+
+                {/* LegitScript badge — replace placeholder once badge is received */}
+                <div className="mt-6">
+                  {/* LEGITSCRIPT_PLACEHOLDER — insert LegitScript badge code here */}
+                  <div className="inline-flex items-center gap-1.5 border border-neutral-border rounded-lg px-3 py-2 opacity-40 cursor-not-allowed select-none">
+                    <span className="font-sans text-[11px] font-semibold text-neutral-text uppercase tracking-wide">LegitScript</span>
+                    <span className="font-sans text-[10px] text-neutral-text">Certified — coming soon</span>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+
+          {/* FDA Disclaimer */}
+          <div className="border-t border-neutral-border pt-6 mb-6">
+            <button
+              onClick={() => setDisclaimerOpen(!disclaimerOpen)}
+              className="flex items-center gap-1.5 font-sans text-[13px] text-neutral-text hover:text-cedar transition-colors group"
+              aria-expanded={disclaimerOpen}
+            >
+              <span className="text-cedar font-bold text-[15px] leading-none">*</span>
+              <span className="underline decoration-dotted underline-offset-2">Compounded Medications Disclaimer</span>
+              <ChevronDown
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${disclaimerOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
+            {disclaimerOpen && (
+              <p className="mt-3 font-sans text-[12px] text-neutral-text leading-relaxed max-w-3xl">
+                Compounded medications are customized prescriptions prepared by a licensed pharmacist to meet the unique needs of an individual patient. Compounded drugs are not FDA-approved, and the FDA does not verify their safety, effectiveness, or quality prior to dispensing.
+              </p>
+            )}
           </div>
 
           {/* Bottom Bar */}
@@ -363,6 +395,12 @@ export function FooterV3({ config = defaultConfig }: { config?: any }) {
             <p className="font-sans text-[14px] text-neutral-text">
               © 2026 {config.businessName}. All rights reserved.
             </p>
+            <a
+              href="/privacy"
+              className="font-sans text-[14px] text-neutral-text hover:text-cedar transition-colors"
+            >
+              Privacy Policy
+            </a>
           </div>
         </div>
       </div>
